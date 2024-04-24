@@ -29,9 +29,8 @@ class LoginController extends Controller
 
         $data =  Admin::where('username', $username)->where('password', $password)->first();
         if($data){
-            Session::put('admin_foto', $data->foto);
-            Session::put('admin_nama', $data->nama_lengkap);
-            Session::put('admin_username', $data->username);
+            Session::put('admin_id', $data->id);
+   
             Session::put('role', 'admin');
 
             Alert::success('Login Berhasil', 'Anda Berhasil Login Sebagai Admin');
