@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -14,7 +15,10 @@ class AdminController extends Controller
     }
     public function dataMember()
     {
-        return view('pages.admin.data-member');
+        $member = Member::all();
+        return view('pages.admin.data-member')->with([
+            'member' => $member
+        ]);
     }
 
     public function storeAdminFoto(Request $request)
