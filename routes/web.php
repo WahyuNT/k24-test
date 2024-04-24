@@ -21,6 +21,7 @@ Route::group(['prefix' => '/', 'middleware' => 'login'], function () {
     route::post('/foto-admin-store', [AdminController::class, 'storeAdminFoto'])->name('foto.admin.store');
     route::get('/data-member', [AdminController::class, 'dataMember'])->name('data-member');
 });
+route::post('/daftar-member', [MemberController::class, 'daftar'])->name('daftar-member');
 
 route::get('login', [LoginController::class, 'index'])->name('login');
 

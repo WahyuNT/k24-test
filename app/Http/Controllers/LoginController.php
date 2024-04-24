@@ -44,7 +44,7 @@ class LoginController extends Controller
     }
 
     public function logout(){
-        // return 'berhasil woi';
+    
         Session::flush();
         Alert::info('Logout', 'Anda Berhasil Logout');
         return redirect()->back();
