@@ -4,7 +4,11 @@
 ```sh
 git clone https://github.com/WahyuNT/k24-test.git
 ```
-2.Lalu jalankan  `composer install` dan `composer update` .
+2.Lalu jalankan  `composer install` dan `composer update`
+```sh
+composer install
+composer update
+```
 3.Jalankan key:generate untuk generate key pada laravel.
 ```sh
 php artisan key:generate
