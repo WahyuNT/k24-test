@@ -131,6 +131,7 @@
                                     {{ old('jenis_kelamin') == 'P' ? 'checked' : '' }}>
                                 <label for="perempuan">Perempuan</label>
                             </div>
+                          
 
                             <div class="d-flex justify-content-center">
                                 <button wire:click="daftar" class="btn btn-primary text-center mt-3">Daftar

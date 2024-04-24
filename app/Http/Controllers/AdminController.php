@@ -30,7 +30,7 @@ class AdminController extends Controller
         $admin = Admin::where('id', session('admin_id'))->first();
 
         $request->validate([
-            'foto' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+            'foto' => 'required|image|max:1048',
         ]);
 
         $file = $request->file('foto');

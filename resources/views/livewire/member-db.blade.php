@@ -10,8 +10,17 @@
             <div class="d-flex justify-content-start flex-wrap">
                 <div class="col-12 col-lg-6 p-3">
                     <div class="card shadow-none">
-                        <img src="{{ asset('assets/images/profile/' . $data->foto) }}" class="rounded" width="auto"
-                            alt="">
+                        @if ($data->foto != 'foto')
+                            <img src="{{ asset('assets/images/profile/' . $data->foto) }}" class="rounded" width="auto"
+                                alt="">
+                        @else
+                            <div class="d-flex justify-content-center align-items-center flex-column">
+
+                                <p class="text-center">Anda belum upload Foto</p>
+                                <button type="button" wire:click="editfoto" class="btn btn-primary w-50">Upload
+                                    Foto</button>
+                            </div>
+                        @endif
                     </div>
                 </div>
 
@@ -31,7 +40,9 @@
                         <span>Jenis Kelamin</span>
                         <input type="text" class="form-control mb-3" disabled wire:model="newdata.jenis_kelamin">
 
-                        <button type="button" wire:click="editfoto" class="btn btn-primary mb-3">Ubah Foto</button>
+                        @if ($data->foto != 'foto')
+                            <button type="button" wire:click="editfoto" class="btn btn-primary mb-3">Ubah Foto</button>
+                        @endif
                         <button type="button" wire:click="editdataTrue" class="btn btn-warning mb-3">Ubah Data</button>
                         <button type="button" wire:click="editdatapassword" class="btn btn-danger mb-3">Ubah
                             Password</button>
@@ -45,9 +56,7 @@
                                     value="{{ old('foto') }}" id="foto" name="foto" accept="image/*"
                                     onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])">
                                 @error('foto')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                    <div class="text-danger mt-1">{{ $message }}</div>
                                 @enderror
                                 <div class="mt-1 space-bawah text-center">
                                     <img src="" id="output" width="200" alt="">
@@ -86,7 +95,7 @@
                         <div class="div mb-3">
 
                             <span>Email</span>
-                            <input type="text" class="form-control "  wire:model="newdata.email">
+                            <input type="text" class="form-control " wire:model="newdata.email">
                             @error('newdata.email')
                                 <span class="error text-danger">{{ $message }}</span>
                             @enderror

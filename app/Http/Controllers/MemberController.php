@@ -20,7 +20,9 @@ class MemberController extends Controller
 
     public function storeMemberFoto(Request $request)
     {
-
+        $request->validate([
+            'foto' => 'required|image|max:1048',
+        ]);
         
         $member = Member::where('id', session('member_id'))->first();
 
@@ -30,9 +32,7 @@ class MemberController extends Controller
             unlink($fotolamaPath);
         }
         
-        $request->validate([
-            'foto' => 'required|image|mimes:jpg,jpeg,png|max:2048',
-        ]);
+     
 
         $file = $request->file('foto');
 
@@ -53,7 +53,10 @@ class MemberController extends Controller
     public function storeMemberFotoAdmin(Request $request,$id)
     {
 
-        
+        $request->validate([
+            'foto' => 'required|image|max:1048',
+        ]);
+
         $member = Member::where('id',$id)->first();
 
         $fotolamaPath = public_path('assets/images/profile/' . $member->foto);
@@ -62,10 +65,7 @@ class MemberController extends Controller
             unlink($fotolamaPath);
         }
         
-        $request->validate([
-            'foto' => 'required|image|mimes:jpg,jpeg,png|max:2048',
-        ]);
-
+       
         $file = $request->file('foto');
 
 

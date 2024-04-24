@@ -25,7 +25,7 @@ class MemberDb extends Component
         'newdata.no_ktp' => 'required|numeric',
         'newdata.tanggal_lahir' => 'required|date',
         'newdata.jenis_kelamin' => 'required|string',
-        'newdata.foto' => 'nullable|image|mimes:jpg,jpeg,png|max:1048'
+        'newdata.foto' => 'nullable|image|max:1048'
     ];
 
     public function mount($id)

@@ -20,7 +20,7 @@ class Login extends Component
         'dataMember.no_ktp' => 'required|numeric',
         'dataMember.tanggal_lahir' => 'required|date',
         'dataMember.jenis_kelamin' => 'required|string',
-        'dataMember.foto' => 'nullable|image|mimes:jpg,jpeg,png|max:1048'
+        'dataMember.foto' => 'nullable|image|max:1048'
     ];
 
 
@@ -58,7 +58,7 @@ class Login extends Component
         'no_ktp' => $this->dataMember['no_ktp'],
         'tanggal_lahir' => $this->dataMember['tanggal_lahir'],
         'jenis_kelamin' => $this->dataMember['jenis_kelamin'],
-        'foto' => 'test',
+        'foto' => 'foto',
     ]);
 
     Alert::success('Daftar Berhasil', 'Anda Berhasil Mendaftar Sebagai Member');

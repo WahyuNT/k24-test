@@ -4,8 +4,17 @@
             <div class="d-flex justify-content-start flex-wrap">
                 <div class="col-12 col-lg-6 p-3">
                     <div class="card shadow-none">
-                        <img src="{{ asset('assets/images/profile/' . $data->foto) }}" class="rounded" width="auto"
-                            alt="">
+                        @if ($data->foto != 'foto')
+                            <img src="{{ asset('assets/images/profile/' . $data->foto) }}" class="rounded" width="auto"
+                                alt="">
+                        @else
+                            <div class="d-flex justify-content-center align-items-center flex-column">
+
+                                <p class="text-center">Anda belum upload Foto</p>
+                                <button type="button" wire:click="editfoto" class="btn btn-primary w-50">Upload
+                                    Foto</button>
+                            </div>
+                        @endif
                     </div>
                 </div>
 
@@ -16,7 +25,7 @@
                         <input type="text" class="form-control mb-3" disabled wire:model="newdata.nama_lengkap">
                         <span>Username</span>
                         <input type="textbac" class="form-control mb-3" disabled wire:model="newdata.username">
-
+                      
                         <button type="button" wire:click="editfoto" class="btn btn-primary">Ubah Foto</button>
                         <button type="button" wire:click="editdataTrue" class="btn btn-warning">Ubah Data</button>
                         <button type="button" wire:click="editdatapassword" class="btn btn-danger">Ubah
@@ -29,9 +38,7 @@
                                 value="{{ old('foto') }}" id="foto" name="foto" accept="image/*"
                                 onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])">
                             @error('foto')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                                <div class="text-danger mt-1">{{ $message }}</div>
                             @enderror
                             <div class="mt-1 space-bawah text-center">
                                 <img src="" id="output" width="200" alt="">
