@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         DB::table('members')->insert([
             [
                 'id' => 1,
-                'foto' => '1713964409_monkey-artwork-illustration-on-light-sky-background-free-vector.jpg',
+                'foto' => '1713965617_ava2.jpg',
                 'name' => 'Mone',
                 'email' => 'mone@gmail.com',
                 'no_hp' => '123',
