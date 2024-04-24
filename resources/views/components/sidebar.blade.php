@@ -24,8 +24,8 @@
                 </li>
                 @if (session('role') == 'admin')
                     <li class="sidebar-item mb-2">
-                        <a class="sidebar-link {{ request()->is('index*') ? 'active' : '' }}"
-                            href="{{ route('index') }}" aria-expanded="false">
+                        <a class="sidebar-link {{ request()->is('data-member*') ? 'active' : '' }}"
+                            href="{{ route('data-member') }}" aria-expanded="false">
                             <span>
                                 <i class='bx bxs-dashboard'></i>
                             </span>

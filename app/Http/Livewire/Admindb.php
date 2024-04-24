@@ -3,15 +3,20 @@
 namespace App\Http\Livewire;
 
 use App\Models\Admin;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class Admindb extends Component
 {
+    use WithFileUploads;
     public $test = '1';
     public $editdata = 'view';
     public $edifoto = false;
     public $newdata = [];
     public $admin = null;
+
+    public $photo;
 
     public $oldpass = null;
 
@@ -57,10 +62,11 @@ class Admindb extends Component
     }
     public function editDataFalse()
     {
-     
         $this->editdata = 'view';
-       
-      
+    }
+    public function editfoto()
+    {
+        $this->editdata = 'editfoto';
     }
 
     public function nullAll()
@@ -121,4 +127,6 @@ class Admindb extends Component
         $this->editDataFalse();
         $this->nullAll();
     }
+
+    
 }

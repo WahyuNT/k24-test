@@ -4,7 +4,7 @@
             <div class="d-flex justify-content-start">
                 <div class="col-6 p-3">
                     <div class="card shadow-none">
-                        <img src="{{ asset('assets/images/profile/admin1.png') }}" class="rounded" width="auto"
+                        <img src="{{ asset('assets/images/profile/' . $data->foto) }}" class="rounded" width="auto"
                             alt="">
                     </div>
                 </div>
@@ -17,10 +17,29 @@
                         <span>Username</span>
                         <input type="text" class="form-control mb-3" disabled wire:model="newdata.username">
 
-                        <button type="button" wire:click="" class="btn btn-primary">Ubah Foto</button>
+                        <button type="button" wire:click="editfoto" class="btn btn-primary">Ubah Foto</button>
                         <button type="button" wire:click="editdataTrue" class="btn btn-warning">Ubah Data</button>
                         <button type="button" wire:click="editdatapassword" class="btn btn-danger">Ubah
                             Password</button>
+                    @elseif ($editdata == 'editfoto')
+                        <span>Upload Foto Baru</span>
+                        <form action="{{ route('foto.admin.store') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <input required type="file" class="form-control @error('foto') is-invalid @enderror"
+                                value="{{ old('foto') }}" id="foto" name="foto" accept="image/*"
+                                onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])">
+                            @error('foto')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                            <div class="mt-1 space-bawah text-center">
+                                <img src="" id="output" width="200" alt="">
+                            </div>
+                            <button type="button" class="btn btn-danger"
+                                onclick="window.history.back();">Kembali</button>
+                            <button type="submit" class="btn btn-success">Simpan Data</button>
+                        </form>
                     @elseif($editdata == 'editdata')
                         <span>Nama Lengkap</span>
                         <input type="text" class="form-control mb-3" wire:model="newdata.nama_lengkap">

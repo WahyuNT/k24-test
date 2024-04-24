@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\FotoController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MemberController;
 use Illuminate\Support\Facades\Route;
@@ -15,7 +17,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::group(['prefix' => '/', 'middleware' => 'login'], function () {
-    route::get('/', [MemberController::class, 'index'])->name('index');
+    route::get('/', [AdminController::class, 'index'])->name('index');
+    route::post('/foto-admin-store', [AdminController::class, 'storeAdminFoto'])->name('foto.admin.store');
+    route::get('/data-member', [AdminController::class, 'dataMember'])->name('data-member');
 });
 
 route::get('login', [LoginController::class, 'index'])->name('login');
