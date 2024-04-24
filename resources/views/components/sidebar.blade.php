@@ -13,16 +13,16 @@
         <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
             <ul id="sidebarnav" class="mt-2">
 
-                <li class="sidebar-item mb-2">
-                    <a class="sidebar-link {{ request()->is('index*') ? 'active' : '' }}" href="{{ route('index') }}"
-                        aria-expanded="false">
-                        <span>
-                            <i class='bx bxs-dashboard'></i>
-                        </span>
-                        <span class="hide-menu">Dashboard {{ session('role') }} </span>
-                    </a>
-                </li>
                 @if (session('role') == 'admin')
+                    <li class="sidebar-item mb-2">
+                        <a class="sidebar-link {{ request()->is('admin*') ? 'active' : '' }}"
+                            href="{{ route('admin') }}" aria-expanded="false">
+                            <span>
+                                <i class='bx bxs-dashboard'></i>
+                            </span>
+                            <span class="hide-menu">Dashboard {{ session('role') }} </span>
+                        </a>
+                    </li>
                     <li class="sidebar-item mb-2">
                         <a class="sidebar-link {{ request()->is('data-member*') ? 'active' : '' }}"
                             href="{{ route('data-member') }}" aria-expanded="false">
@@ -33,7 +33,17 @@
                         </a>
                     </li>
                 @endif
-
+                @if (session('role') == 'member')
+                    <li class="sidebar-item mb-2">
+                        <a class="sidebar-link {{ request()->is('member*') ? 'active' : '' }}"
+                            href="{{ route('member') }}" aria-expanded="false">
+                            <span>
+                                <i class='bx bxs-dashboard'></i>
+                            </span>
+                            <span class="hide-menu">Dashboard Member</span>
+                        </a>
+                    </li>
+                @endif
 
 
             </ul>

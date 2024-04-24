@@ -9,13 +9,21 @@
                     </div>
                 </div>
 
-                <div class="col-612 col-lg-6>
+                <div class="col-12 col-lg-6">
 
                     @if ($editdata == 'view')
-                        <span>Nama Lengkap</span>
-                        <input type="text" class="form-control mb-3" disabled wire:model="newdata.nama_lengkap">
-                        <span>Username</span>
-                        <input type="textbac" class="form-control mb-3" disabled wire:model="newdata.username">
+                        <span>Nama</span>
+                        <input type="text" class="form-control mb-3" disabled wire:model="newdata.name">
+                        <span>Email</span>
+                        <input type="text" class="form-control mb-3" disabled wire:model="newdata.email">
+                        <span>No HP</span>
+                        <input type="text" class="form-control mb-3" disabled wire:model="newdata.no_hp">
+                        <span>No KTP</span>
+                        <input type="text" class="form-control mb-3" disabled wire:model="newdata.no_ktp">
+                        <span>Tanggal Lahir</span>
+                        <input type="text" class="form-control mb-3" disabled wire:model="newdata.tanggal_lahir">
+                        <span>Jenis Kelamin</span>
+                        <input type="text" class="form-control mb-3" disabled wire:model="newdata.jenis_kelamin">
 
                         <button type="button" wire:click="editfoto" class="btn btn-primary mb-3">Ubah Foto</button>
                         <button type="button" wire:click="editdataTrue" class="btn btn-warning mb-3">Ubah Data</button>
@@ -23,7 +31,7 @@
                             Password</button>
                     @elseif ($editdata == 'editfoto')
                         <span>Upload Foto Baru</span>
-                        <form action="{{ route('foto.admin.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('foto.member.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <input required type="file" class="form-control @error('foto') is-invalid @enderror"
                                 value="{{ old('foto') }}" id="foto" name="foto" accept="image/*"
@@ -40,11 +48,58 @@
                             <button type="submit" class="btn btn-success">Simpan Data</button>
                         </form>
                     @elseif($editdata == 'editdata')
-                        <span>Nama Lengkap</span>
-                        <input type="text" class="form-control mb-3" wire:model="newdata.nama_lengkap">
+                        <div class="div mb-3">
 
-                        <span>Username</span>
-                        <input type="text" class="form-control mb-3" wire:model="newdata.username">
+                            <span>Nama</span>
+                            <input type="text" class="form-control " wire:model="newdata.name">
+                            @error('newdata.name')
+                                <span class="error text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="div mb-3">
+
+                            <span>Email</span>
+                            <input type="text" class="form-control " disabled wire:model="newdata.email">
+                            @error('newdata.email')
+                                <span class="error text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="div mb-3">
+
+                            <span>No HP</span>
+                            <input type="text" class="form-control " wire:model="newdata.no_hp">
+                            @error('newdata.no_hp')
+                                <span class="error text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="div mb-3">
+
+                            <span>No KTP</span>
+                            <input type="text" class="form-control " wire:model="newdata.no_ktp">
+                            @error('newdata.no_ktp')
+                                <span class="error text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="div mb-3">
+
+                            <span>Tanggal Lahir</span>
+                            <input type="date" class="form-control " wire:model="newdata.tanggal_lahir">
+                            @error('newdata.tanggal_lahir')
+                                <span class="error text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="div mb-3">
+
+                            <span>Jenis Kelamin</span><br>
+
+                            <input required wire:model="newdata.jenis_kelamin" type="radio" id="laki-laki"
+                                name="jenis_kelamin" value="L" {{ old('jenis_kelamin') == 'L' ? 'checked' : '' }}>
+                            <label for="laki-laki">Laki-laki</label>
+
+                            <input required wire:model="newdata.jenis_kelamin" type="radio" id="perempuan"
+                                name="jenis_kelamin" value="P" {{ old('jenis_kelamin') == 'P' ? 'checked' : '' }}>
+                            <label for="perempuan">Perempuan</label>
+                        </div>
 
                         <button wire:click="back" class="btn btn-danger">Kembali</button>
                         <button wire:click="savedata" class="btn btn-success">Simpan Data</button>

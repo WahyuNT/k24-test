@@ -37,12 +37,12 @@ class Admindb extends Component
     {
         $data = $this->admin;
         $editdata = $this->editdata;
-        $test = $this->test;
+    
 
         return view('livewire.admindb', with([
             'editdata' => $editdata,
             'data' => $data,
-            'test' => $test
+         
 
         
         ]));

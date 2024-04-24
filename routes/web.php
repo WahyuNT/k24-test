@@ -17,13 +17,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::group(['prefix' => '/', 'middleware' => 'login'], function () {
-    route::get('/', [AdminController::class, 'index'])->name('index');
+    route::get('/admin', [AdminController::class, 'index'])->name('admin');
     route::post('/foto-admin-store', [AdminController::class, 'storeAdminFoto'])->name('foto.admin.store');
     route::get('/data-member', [AdminController::class, 'dataMember'])->name('data-member');
+    
+    
+    route::get('/member', [MemberController::class, 'index'])->name('member');
+    route::post('/foto-member-store', [MemberController::class, 'storeMemberFoto'])->name('foto.member.store');
 });
 route::post('/daftar-member', [MemberController::class, 'daftar'])->name('daftar-member');
 
 route::get('login', [LoginController::class, 'index'])->name('login');
 
 route::post('login-admin', [LoginController::class, 'loginAdmin'])->name('loginAdmin');
+route::post('login-member', [LoginController::class, 'loginMember'])->name('loginMember');
 route::post('logout', [LoginController::class, 'logout'])->name('logout');

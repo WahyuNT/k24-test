@@ -27,24 +27,27 @@
                 <div class="card">
                     <div class="card-body">
                         <h2 class="text-center mb-4">Login Member</h2>
-                        <span>Username</span>
-                        <input type="text" class="form-control mb-4" placeholder="Masukkan username">
-                        <span>Password</span>
+                        <form action="{{ route('loginMember') }}" method="POST">
+                            @csrf
+                            <span>Email</span>
+                            <input type="text" name="email" class="form-control mb-4" placeholder="Masukkan Email">
+                            <span>Password</span>
 
-                        <input type="text" class="form-control " placeholder="Masukkan password">
-                        <div class="d-flex justify-content-center">
-                            <button class="btn btn-primary text-center mt-3">Login</button>
-                        </div>
-                        <p class="text-center mt-3">
-                            Belum jadi member?
-                            <span>
-                                <a href="#" wire:click.prevent="daftarChange">
-                                    Daftar member
-                                </a>
-                            </span>
-                        </p>
+                            <input name="password" type="password" class="form-control "
+                                placeholder="Masukkan password">
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" class="btn btn-primary text-center mt-3">Login</button>
+                            </div>
+                            <p class="text-center mt-3">
+                                Belum jadi member?
+                                <span>
+                                    <a href="#" wire:click.prevent="daftarChange">
+                                        Daftar member
+                                    </a>
+                                </span>
+                            </p>
 
-
+                        </form>
                     </div>
                 </div>
 
@@ -66,42 +69,54 @@
                                 <span>Nama</span>
                                 <input required wire:model="dataMember.name" type="text" class="form-control mb-4"
                                     placeholder="Masukkan username">
-                                    @error('dataMember.name') <span class="error text-danger">{{ $message }}</span> @enderror
+                                @error('dataMember.name')
+                                    <span class="error text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
 
                             <div class="mb-2">
                                 <span>Password</span>
                                 <input required wire:model="dataMember.password" type="password" class="form-control"
                                     placeholder="Masukkan password">
-                                    @error('dataMember.password') <span class="error text-danger">{{ $message }}</span> @enderror
+                                @error('dataMember.password')
+                                    <span class="error text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
 
                             <div class="mb-2">
                                 <span>Email</span>
                                 <input required wire:model="dataMember.email" type="email" class="form-control"
                                     placeholder="Masukkan Email">
-                                    @error('dataMember.email') <span class="error text-danger">{{ $message }}</span> @enderror
+                                @error('dataMember.email')
+                                    <span class="error text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
 
                             <div class="mb-2">
                                 <span>No HP</span>
                                 <input required wire:model="dataMember.no_hp" type="tel" class="form-control"
                                     placeholder="Masukkan No HP">
-                                    @error('dataMember.no_hp') <span class="error text-danger">{{ $message }}</span> @enderror
+                                @error('dataMember.no_hp')
+                                    <span class="error text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
 
                             <div class="mb-2">
                                 <span>No KTP</span>
                                 <input required wire:model="dataMember.no_ktp" type="number" class="form-control"
                                     placeholder="Masukkan No KTP">
-                                    @error('dataMember.no_ktp') <span class="error text-danger">{{ $message }}</span> @enderror
+                                @error('dataMember.no_ktp')
+                                    <span class="error text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
 
                             <div class="mb-2">
                                 <span>Tanggal Lahir</span>
                                 <input required wire:model="dataMember.tanggal_lahir" type="date"
                                     class="form-control" placeholder="Masukkan tanggal lahir">
-                                    @error('dataMember.tanggal_lahir') <span class="error text-danger">{{ $message }}</span> @enderror
+                                @error('dataMember.tanggal_lahir')
+                                    <span class="error text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
 
                             <div class="mb-2">

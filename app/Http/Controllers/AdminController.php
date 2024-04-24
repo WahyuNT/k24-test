@@ -32,9 +32,10 @@ class AdminController extends Controller
 
         $file = $request->file('foto');
 
-        $fotolama = 'assets/images/profile' . $admin->foto;
-        if (Storage::exists($fotolama)) {
-            Storage::delete($fotolama);
+        $fotolamaPath = public_path('assets/images/profile/' . $admin->foto);
+
+        if (file_exists($fotolamaPath)) {
+            unlink($fotolamaPath);
         }
 
         $nama_file = time() . '_' . $file->getClientOriginalName();
