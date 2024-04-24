@@ -83,4 +83,9 @@ class MemberController extends Controller
         return back();
     }
 
+    public function listMember(){
+        $member = Member::all();
+        return response()->json($member);
+    }
+
 }

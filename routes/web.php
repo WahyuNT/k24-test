@@ -36,3 +36,5 @@ route::get('login', [LoginController::class, 'index'])->name('login');
 route::post('login-admin', [LoginController::class, 'loginAdmin'])->name('loginAdmin');
 route::post('login-member', [LoginController::class, 'loginMember'])->name('loginMember');
 route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+route::get('/list-member', [MemberController::class, 'listMember'])->name('home');
