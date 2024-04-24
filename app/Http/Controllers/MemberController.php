@@ -11,6 +11,9 @@ class MemberController extends Controller
 {
     public function index()
     {
+        if (session('role') != 'member') {
+            return redirect()->route('admin');
+         }
         return view('pages.member.index');
     }
 

@@ -11,6 +11,9 @@ class AdminController extends Controller
 {
     public function index()
     {
+        if (session('role') != 'admin') {
+            return redirect()->route('member');
+         }
         return view('pages.admin.index');
     }
     public function dataMember()

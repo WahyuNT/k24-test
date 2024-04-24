@@ -1,4 +1,4 @@
 @extends('layouts.master')
 @section('content')
-    @livewire('member-db')
+    @livewire('member-db', ['id' => null])
 @endsection

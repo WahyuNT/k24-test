@@ -30,7 +30,7 @@ class MemberDb extends Component
 
     public function mount($id)
     {
-       if (session('role' == 'member')) {
+       if (session('role') == 'member' ) {
            $this->member = Member::where('id', session('member_id'))->first();
         
        }else{
@@ -50,6 +50,7 @@ class MemberDb extends Component
 
     public function render()
     {
+    
         $data = $this->member;
         $editdata = $this->editdata;
 

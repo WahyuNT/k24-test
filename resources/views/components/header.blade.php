@@ -14,6 +14,7 @@
             </li>
         </ul>
         <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+            <p class="m-0">Anda adalah {{ session('role') }}</p>
             <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
