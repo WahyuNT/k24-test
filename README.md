@@ -12,10 +12,10 @@ php artisan key:generate
 4.Buka file .env lalu ubah nama database
 ```sh
 {
-    DB_HOST=//IP Server
-    DB_DATABASE=k24-test
-    DB_USERNAME=//DB Username
-    DB_PASSWORD=//DB Password
+    DB_HOST = //IP Server
+    DB_DATABASE = k24-test
+    DB_USERNAME = //DB Username
+    DB_PASSWORD = //DB Password
 }
 ```
 5.Jalankan `php artisan migrate` untuk membuat database, namun jika gagal bisa membuat secara manual database bernama `k24-test`
