@@ -23,9 +23,9 @@
                     @if ($editdata == 'view')
                         <span>Nama Lengkap</span>
                         <input type="text" class="form-control mb-3" disabled wire:model="newdata.nama_lengkap">
-                        <span>Username</span>
+                        <span>Username</span><small class="text-danger"> (yang akan digunakan untuk login)</small>
                         <input type="textbac" class="form-control mb-3" disabled wire:model="newdata.username">
-                      
+
                         <button type="button" wire:click="editfoto" class="btn btn-primary">Ubah Foto</button>
                         <button type="button" wire:click="editdataTrue" class="btn btn-warning">Ubah Data</button>
                         <button type="button" wire:click="editdatapassword" class="btn btn-danger">Ubah
@@ -50,7 +50,7 @@
                         <span>Nama Lengkap</span>
                         <input type="text" class="form-control mb-3" wire:model="newdata.nama_lengkap">
 
-                        <span>Username</span>
+                        <span>Username</span><small class="text-danger"> (yang akan digunakan untuk login)</small>
                         <input type="text" class="form-control mb-3" wire:model="newdata.username">
 
                         <button wire:click="back" class="btn btn-danger">Kembali</button>

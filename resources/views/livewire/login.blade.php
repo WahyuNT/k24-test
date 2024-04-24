@@ -10,10 +10,10 @@
                             @csrf
                             <span>Username</span>
                             <input name="username" required type="text" class="form-control mb-4"
-                                placeholder="Masukkan username">
+                                placeholder=" gunakan usernam dan pass admin">
                             <span>Password</span>
                             <input name="password" required type="password" class="form-control"
-                                placeholder="Masukkan password">
+                                placeholder="admin">
                             <div class="d-flex justify-content-center">
 
                                 <button type="submit" class="btn btn-primary  mt-3">Login</button>
@@ -30,7 +30,7 @@
                         <form action="{{ route('loginMember') }}" method="POST">
                             @csrf
                             <span>Email</span>
-                            <input type="text" name="email" class="form-control mb-4" placeholder="Masukkan Email">
+                            <input  type="text" name="email" class="form-control mb-4" placeholder="Masukkan Email">
                             <span>Password</span>
 
                             <input name="password" type="password" class="form-control "

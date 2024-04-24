@@ -85,6 +85,8 @@ class MemberDb extends Component
     public function nullAll()
     {
         $this->oldpass = null;
+        $this->newdata['newpassword'] = null;
+        $this->newdata['newpassword_confirmation'] = null;
     }
     public function back()
     {

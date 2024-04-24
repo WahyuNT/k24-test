@@ -29,8 +29,8 @@
                     @if ($editdata == 'view')
                         <span>Nama</span>
                         <input type="text" class="form-control mb-3" disabled wire:model="newdata.name">
-                        <span>Email</span>
-                        <input type="text" class="form-control mb-3" disabled wire:model="newdata.email">
+                        {{-- <span>Email</span> --}}
+                        <input hidden type="text" class="form-control mb-3" disabled wire:model="newdata.email">
                         <span>No HP</span>
                         <input type="text" class="form-control mb-3" disabled wire:model="newdata.no_hp">
                         <span>No KTP</span>
@@ -94,8 +94,8 @@
                         </div>
                         <div class="div mb-3">
 
-                            <span>Email</span>
-                            <input type="text" class="form-control " wire:model="newdata.email">
+                            {{-- <span>Email</span> --}}
+                            <input hidden type="text" class="form-control " wire:model="newdata.email">
                             @error('newdata.email')
                                 <span class="error text-danger">{{ $message }}</span>
                             @enderror
