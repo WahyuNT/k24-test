@@ -28,7 +28,7 @@ Route::group(['prefix' => '/', 'middleware' => 'login'], function () {
 });
 
 
-route::get('/', [LoginController::class, 'index'])->name('index');
+
 
 route::post('/daftar-member', [MemberController::class, 'daftar'])->name('daftar-member');
 route::get('login', [LoginController::class, 'index'])->name('login');
