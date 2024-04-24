@@ -10,7 +10,7 @@
                             @csrf
                             <span>Username</span>
                             <input name="username" required type="text" class="form-control mb-4"
-                                placeholder=" gunakan usernam dan pass admin">
+                                placeholder=" gunakan username dan pass admin">
                             <span>Password</span>
                             <input name="password" required type="password" class="form-control"
                                 placeholder="admin">
