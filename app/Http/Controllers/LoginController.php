@@ -17,7 +17,7 @@ class LoginController extends Controller
         if ($login == null) {
             return view('pages.login');
         } else {
-            return redirect()->route('index');
+            return redirect()->route('admin');
         }
      
     }
