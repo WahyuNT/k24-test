@@ -51,4 +51,10 @@ class AdminController extends Controller
 
         return back();
     }
+    public function editDataMember($id){
+        $member = Member::where('id', $id)->first();
+        return view('pages.admin.edit-data-member')->with([
+            'member' => $member
+        ]);
+    }
 }

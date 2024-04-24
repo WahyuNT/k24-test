@@ -9,7 +9,7 @@
                     </div>
                 </div>
 
-                <div class="col-612 col-lg-6>
+                <div class="col-12 col-lg-6">
 
                     @if ($editdata == 'view')
                         <span>Nama Lengkap</span>
@@ -17,9 +17,9 @@
                         <span>Username</span>
                         <input type="textbac" class="form-control mb-3" disabled wire:model="newdata.username">
 
-                        <button type="button" wire:click="editfoto" class="btn btn-primary mb-3">Ubah Foto</button>
-                        <button type="button" wire:click="editdataTrue" class="btn btn-warning mb-3">Ubah Data</button>
-                        <button type="button" wire:click="editdatapassword" class="btn btn-danger mb-3">Ubah
+                        <button type="button" wire:click="editfoto" class="btn btn-primary">Ubah Foto</button>
+                        <button type="button" wire:click="editdataTrue" class="btn btn-warning">Ubah Data</button>
+                        <button type="button" wire:click="editdatapassword" class="btn btn-danger">Ubah
                             Password</button>
                     @elseif ($editdata == 'editfoto')
                         <span>Upload Foto Baru</span>

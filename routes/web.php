@@ -20,6 +20,8 @@ Route::group(['prefix' => '/', 'middleware' => 'login'], function () {
     route::get('/admin', [AdminController::class, 'index'])->name('admin');
     route::post('/foto-admin-store', [AdminController::class, 'storeAdminFoto'])->name('foto.admin.store');
     route::get('/data-member', [AdminController::class, 'dataMember'])->name('data-member');
+    Route::get('edit-member/{id}/detail', [AdminController::class, 'editDataMember'])->name('edit-member');
+    route::post('/foto-member-store-admin/{id}/post', [MemberController::class, 'storeMemberFotoAdmin'])->name('foto.member.store.admin');
     
     
     route::get('/member', [MemberController::class, 'index'])->name('member');

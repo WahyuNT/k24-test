@@ -13,6 +13,7 @@ class MemberDb extends Component
     public $newdata = [];
     public $member = null;
 
+
     public $photo;
 
     public $oldpass = null;
@@ -27,10 +28,14 @@ class MemberDb extends Component
         'newdata.foto' => 'nullable|image|mimes:jpg,jpeg,png|max:1048'
     ];
 
-    public function mount()
+    public function mount($id)
     {
-       
-        $this->member = Member::where('id', session('member_id'))->first();
+       if (session('role' == 'member')) {
+           $this->member = Member::where('id', session('member_id'))->first();
+        
+       }else{
+           $this->member = Member::where('id', $id)->first();
+        }
         $this->newdata = [
             'name' => $this->member->name,
             'email' => $this->member->email,

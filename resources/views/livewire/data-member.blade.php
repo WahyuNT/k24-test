@@ -2,6 +2,7 @@
     <div class="px-3">
         <input type="text" class="form-control mb-3" placeholder="search" wire:model="search">
     </div>
+    
     <div class="d-flex justify-content-start  flex-wrap ">
         @forelse($data as $item)
             <div class="col-12 col-lg-3 px-3">
@@ -44,7 +45,11 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <button class="btn btn-warning text-center w-100">Edit Data</button>
+                        <a href="{{ route('edit-member', [$item->id]) }}">
+
+
+                            <button class="btn btn-warning text-center w-100">Edit Data</button>
+                        </a>
                     </div>
                 </div>
             </div>

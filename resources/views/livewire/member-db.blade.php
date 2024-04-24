@@ -1,6 +1,12 @@
 <div>
     <div class="card">
         <div class="card-body">
+            @if (session('role') == 'admin')
+                <a href="{{ route('data-member') }}">
+
+                    <button class="btn btn-primary">Kembali</button>
+                </a>
+            @endif
             <div class="d-flex justify-content-start flex-wrap">
                 <div class="col-12 col-lg-6 p-3">
                     <div class="card shadow-none">
@@ -31,22 +37,43 @@
                             Password</button>
                     @elseif ($editdata == 'editfoto')
                         <span>Upload Foto Baru</span>
-                        <form action="{{ route('foto.member.store') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <input required type="file" class="form-control @error('foto') is-invalid @enderror"
-                                value="{{ old('foto') }}" id="foto" name="foto" accept="image/*"
-                                onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])">
-                            @error('foto')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                            <div class="mt-1 space-bawah text-center">
-                                <img src="" id="output" width="200" alt="">
-                            </div>
-                            <button wire:click="back" class="btn btn-danger">Kembali</button>
-                            <button type="submit" class="btn btn-success">Simpan Data</button>
-                        </form>
+                        @if (session('role') == 'member')
+                            <form action="{{ route('foto.member.store') }}" method="POST"
+                                enctype="multipart/form-data">
+                                @csrf
+                                <input required type="file" class="form-control @error('foto') is-invalid @enderror"
+                                    value="{{ old('foto') }}" id="foto" name="foto" accept="image/*"
+                                    onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])">
+                                @error('foto')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                <div class="mt-1 space-bawah text-center">
+                                    <img src="" id="output" width="200" alt="">
+                                </div>
+                                <button wire:click="back" class="btn btn-danger">Kembali</button>
+                                <button type="submit" class="btn btn-success">Simpan Data</button>
+                            </form>
+                        @else
+                            <form action="{{ route('foto.member.store.admin', [($id = $data->id)]) }}" method="POST"
+                                enctype="multipart/form-data">
+                                @csrf
+                                <input required type="file" class="form-control @error('foto') is-invalid @enderror"
+                                    value="{{ old('foto') }}" id="foto" name="foto" accept="image/*"
+                                    onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])">
+                                @error('foto')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                <div class="mt-1 space-bawah text-center">
+                                    <img src="" id="output" width="200" alt="">
+                                </div>
+                                <button wire:click="back" class="btn btn-danger">Kembali</button>
+                                <button type="submit" class="btn btn-success">Simpan Data</button>
+                            </form>
+                        @endif
                     @elseif($editdata == 'editdata')
                         <div class="div mb-3">
 
@@ -59,7 +86,7 @@
                         <div class="div mb-3">
 
                             <span>Email</span>
-                            <input type="text" class="form-control " disabled wire:model="newdata.email">
+                            <input type="text" class="form-control "  wire:model="newdata.email">
                             @error('newdata.email')
                                 <span class="error text-danger">{{ $message }}</span>
                             @enderror
@@ -93,11 +120,13 @@
                             <span>Jenis Kelamin</span><br>
 
                             <input required wire:model="newdata.jenis_kelamin" type="radio" id="laki-laki"
-                                name="jenis_kelamin" value="L" {{ old('jenis_kelamin') == 'L' ? 'checked' : '' }}>
+                                name="jenis_kelamin" value="L"
+                                {{ old('jenis_kelamin') == 'L' ? 'checked' : '' }}>
                             <label for="laki-laki">Laki-laki</label>
 
                             <input required wire:model="newdata.jenis_kelamin" type="radio" id="perempuan"
-                                name="jenis_kelamin" value="P" {{ old('jenis_kelamin') == 'P' ? 'checked' : '' }}>
+                                name="jenis_kelamin" value="P"
+                                {{ old('jenis_kelamin') == 'P' ? 'checked' : '' }}>
                             <label for="perempuan">Perempuan</label>
                         </div>
 
